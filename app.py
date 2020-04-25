@@ -4,15 +4,17 @@ from models.database import db_session
 from datetime import datetime
 import key
 from hashlib import sha256
+import logging
 
  #自身の名称をappという名前でインスタンス化する。
 app = Flask(__name__)
-
+ 
 app.secret_key = key.SECRET_KEY
 
 @app.route('/')
 @app.route('/index')
 def index():
+    
     if "user_name" in session:
         name = session["user_name"]
         all_onegai = OnegaiContent.query.all()
@@ -60,6 +62,18 @@ def top():
     status = request.args.get("status")
     return render_template("top.html",status=status)
 
+@app.route("/test",methods=["get","post"])
+def testroute():
+    title = 'テストページのtitle'
+    age=request.args.get("age")
+    top_url=url_for("top",status="logout",name="igarashi")
+    if request.method == "GET":
+        return render_template("test.html",title= title,request=request,age=age,top_url=top_url)
+    elif request.method == "POST":
+        print("POSTを行った")
+        name=request.form["name"]
+        return render_template("test.html",name=name,title=title,request=request)
+
 #ログインロジック
 @app.route("/login",methods=["post"])
 def login():
@@ -88,10 +102,11 @@ def registar():
     user_name = request.form["user_name"]
     user = User.query.filter_by(user_name=user_name).first()
     if user:
+        print("newcomerにリダイレクトされた")
         return redirect(url_for("newcomer",status="exist_user"))
     else:
         password = request.form["password"]
-        hashed_password = sha256((user_name+password+key.SALT).encode("utf-8")).hexdigest()
+        hashed_password = sha256((user_name + password + key.SALT).encode("utf-8")).hexdigest()
         user = User(user_name,hashed_password)
         db_session.add(user)
         db_session.commit()
@@ -104,12 +119,6 @@ def logout():
     return redirect(url_for("top",status="logout"))
 
 
-
-
-
-
-
-## おまじない
 if __name__ == "__main__":
     app.run(debug=True)
 
