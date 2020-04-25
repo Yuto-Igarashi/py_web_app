@@ -1,6 +1,6 @@
 作業環境は vscodeが前提
 
-## 実行環境構築
+## 実行環境構築(初めの1回のみ)
 cloneしたら、リポジトリのディレクトリに移動する。
 ```
 cd py_web_app
@@ -50,7 +50,6 @@ pip install -r requirements.txt
 deactivate
 ```
 
-
 ## 新しいパッケージをインストールしたい場合
 pipインストールを行う。　
 仮想環境に入っている前提。その仮想環境下でpipインストールを行うと、グローバルなpython環境には影響しない。
@@ -88,3 +87,36 @@ sql/create_database.sql
 sql/create_table_users.sql
 sql/create_table_onegaicontents.sql
 ```
+
+
+
+## 作業時の対応
+作業をする時は以下を行う。
+
+pythonの仮想環境に入る。
+```
+source venv/bin/activate
+```
+
+仮想環境を離脱する場合は以下を実行。
+```
+deactivate
+```
+
+mysqlを起動する。
+```
+mysql.server start
+```
+
+mysqlに入る。(パスワードを設定している場合は、入力する)
+```
+mysql -uroot -p
+```
+
+mysqlを停止する場合は以下を実行する
+```
+mysql.server stop
+```
+
+
+
