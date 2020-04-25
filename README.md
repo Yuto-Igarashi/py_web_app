@@ -38,13 +38,18 @@ settings.jsonに以下を記載する。
 }
 ```
 
-
 requirements.txt の内容をpipインストールする。
 ```
 pip install -r requirements.txt
 ```
 
 これで、環境構築完了。
+
+### 仮想環境を離脱する
+```
+deactivate
+```
+
 
 ## 新しいパッケージをインストールしたい場合
 pipインストールを行う。　
