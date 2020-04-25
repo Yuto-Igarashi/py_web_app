@@ -78,7 +78,7 @@ SALT = "dvdvdve23erfefe"
 ## SQL環境を作成する
 前提:Homebrewをインストール済み、Homebrewにて、mysqlをインストール済み。mysqlに入れる。
 
-以下のsqlを実行し、py_web_app_sample databaseを作成する。
+以下のsqlを実行し、py_web_app_sampleのdatabaseを作成する。
 ```
 sql/create_database.sql
 ```
