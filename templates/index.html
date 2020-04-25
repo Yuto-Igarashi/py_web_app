@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{name}}</title>
+</head>
+<body>
+    <h1>WEBアプリケーション flask</h1>
+    <p><a href="/logout">ログアウトする</a></p>
+    
+    {% if name=="igarashi" %}
+    <p>スペシャル{{name}}</p>
+    {% elif name %}
+    <p>{{name}}</p>
+    {% else %}
+    <p>しょーもない</p>
+    {% endif %}
+    <ul>
+        {% for item in pokemon %}
+        <li>{{item}}</li>
+        {% endfor %}
+    </ul> 
+    
+
+    <form action="/add" method="POST">
+        <input type="text" name="title" placeholder="titile">
+        <input type="text" name="body" placeholder="body">
+        <input type="submit" value="Add">
+    </form>
+
+    <form action="/update" method="POST" id="update">
+        <input type="text" name="title" placeholder="titile">
+        <input type="text" name="body" placeholder="body">
+        <input type="submit" value="Update">
+    </form>
+    <form action="/delete" method="POST" id="delete">
+        <input type="submit" value="Delete selected All onegai">        
+    </form>
+    {% for onegai in all_onegai %}
+    <div>
+        <input type="radio" name="update" form="update" value="{{onegai.id}}">
+        <input type="checkbox" name="delete"  form="delete" value="{{onegai.id}}">
+        {{onegai.title}}：{{onegai.body}}（{{onegai.date}}）
+
+    </div>
+    {% endfor %}
+
+
+</body>
+</html>

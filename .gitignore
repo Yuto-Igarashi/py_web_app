@@ -1,0 +1,7 @@
+.config
+.vscode
+__pycache__
+key.py
+venv
+models/Pipfile
+models/Pipfile.lock

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registar</title>
+</head>
+<body>
+    <h1>新規登録</h1>
+    <p><a href="/top">ログイン画面に戻る</a></p>
+    {% if status=="exist_user" %}
+    <p>そのユーザはすでに登録されています。</p>
+    {% endif %}
+    <form action="/registar" method="POST">
+        <input type="text" name="user_name" placeholder="user name">
+        <input type="password" name="password" placeholder="password"> 
+        <input type="submit" value="新規登録">
+    </form>
+</body>
+</html>
