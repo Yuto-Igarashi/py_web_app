@@ -62,3 +62,29 @@ requirements.txtにpipインストールした内容を書き込む。
 ```
 pip freeze > requirements.txt
 ```
+
+## 暗号化キー情報を扱うファイルkey.pyの作成
+key.pyを作成する
+```
+touch key.py
+```
+
+どちらも任意の文字列で大丈夫です
+```
+SECRET_KEY = "123344fefdedwesdfe"
+SALT = "dvdvdve23erfefe"
+```
+
+## SQL環境を作成する
+前提:Homebrewをインストール済み、Homebrewにて、mysqlをインストール済み。mysqlに入れる。
+
+以下のsqlを実行し、py_web_app_sample databaseを作成する。
+```
+sql/create_database.sql
+```
+
+続いて、onegaicontents　、usersのテーブルを作成する。
+```
+sql/create_table_users.sql
+sql/create_table_onegaicontents.sql
+```
